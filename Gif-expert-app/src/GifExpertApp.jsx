@@ -5,9 +5,10 @@ export const GifExpertApp = () => {
   //Hook que mantiene el stado
   const [categories, setCategories] = useState(["Jujutsu Kaisen", "Kingdom"]);
 
-  const onAddCategory = () => {
+  const onAddCategory = (newCategory) => {
+
     // setCategories( categories.concat("Lol") );
-    setCategories(["", ...categories]);
+    setCategories([ newCategory, ...categories] );
     // setCategories( cat => [...cat, 'NewCategory']);
   };
 
@@ -16,12 +17,10 @@ export const GifExpertApp = () => {
       <h1 className="Title">GIFEXPERTAPP</h1>
 
       {/* Input */}
-      <AddCategory setCategories={ setCategories }></AddCategory>
-      <div className="searchbtn">
-        {/* <button onClick={onAddCategory} className="button1">
-          Agregar
-        </button> */}
-      </div>
+      {/* <AddCategory setCategories={ setCategories }></AddCategory> */}
+
+      <AddCategory onNewCategory={ (value) => onAddCategory( value )  }></AddCategory>
+
 
       {/* Listado de Gifs */}
       <div className="listGif">
