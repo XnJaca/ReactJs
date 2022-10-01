@@ -32,6 +32,7 @@
   );
   --inputTransitionDuration: var(--transitionDuration);
   --inputTransitionTF: var(--transitionTF);
+  /* overflow: scroll; */
 }
 
 *,
@@ -44,9 +45,11 @@ html {
   font-size: 10px;
 }
 
-
 h1,
-h2,h3,h4,p{
+h2,
+h3,
+h4,
+p {
   color: white;
 }
 
@@ -58,9 +61,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
+  overflow: auto;
+  width: 100%;
+  height: auto;
   color: #455a64;
   background-color: #7e57c2;
   font-family: var(--fontFamily);
@@ -73,8 +76,8 @@ body {
   max-width: 100%;
 }
 
-.Title  {
-  margin: 0 0 var(--gutterXx) 0;
+.Title {
+  margin: 10 0 2% 0;
   padding: 0;
   color: #fff;
   font-size: var(--fontSizeXx);
@@ -213,8 +216,8 @@ body {
 }
 .button1:hover {
   box-shadow: 2px 3px 6px rgba(255, 255, 255, 0.6),
-    -2px -2px 4px rgba(205, 97, 255, 0.4),
-    2px 2px 2px #6c4ba7, 2px 2px 4px #6c4ba7;
+    -2px -2px 4px rgba(205, 97, 255, 0.4), 2px 2px 2px #6c4ba7,
+    2px 2px 4px #6c4ba7;
 }
 .button1:active {
   box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.7),
@@ -225,4 +228,75 @@ body {
 
 li {
   color: white;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {
+  margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+
+@media screen and (max-width: 1000px) {
+  .column {
+    width: 50%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  border-radius: 30px;
+}
+
+.card h1,
+h2,
+h3,
+h4,
+p {
+  color: black;
+  font-size: 1.5vh;
+}
+
+.card img {
+  border-radius: 30px;
+}
+
+.listGifs {
+  padding: 1%;
+}
+
+.responsive {
+  width: 100%;
+  max-width: 400px;
+  height: 20rem;
 }
