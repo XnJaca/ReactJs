@@ -7,17 +7,17 @@ const getTitle = (title, category) => {
     return title;
   };
 
-export const GifGridItem = ({ title, url, category }) => {
+export const GifItemm = ({ title, url, category }) => {
  
 
   return (
     <div className="column">
       <div className="card">
-        <img src={url} className="responsive" width="auto" height="200"></img>
+        <img src={url} className="responsive" width="auto" height="200" alt={title}></img>
         <h2>{getTitle(title, category)}</h2>
       </div>
     </div>
   );
 };
 
-export default GifGridItem;
+export default GifItemm;
