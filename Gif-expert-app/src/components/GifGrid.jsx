@@ -4,32 +4,21 @@ import { GifItemm } from "./GifItem";
 import { useFetchGifs } from "../hooks/useFetchGifs";
 
 export const GifGrid = ({ category }) => {
-
-  const {images, isLoading} = useFetchGifs(category);
-
-  console.log(isLoading);
-  // En ves de todo este codigo usaremos un custom hook.
-  // const [images, setImages] = useState([]);
-  // const [isLoadinig, setIsLoading] = useState([]);
-
-  // const getImages = async () => {
-  //   const newImages = await getGifs(category);
-  //   setImages(newImages);
-  // };
-
-  // //useEffect dispara un efecto secundario
-  // //useEffect no puede ser asincrono (async)
-  // useEffect(() => {
-  //   getImages();
-  // }, []);
+  // LLamamos a nuestro custom hook.
+  const { images, isLoading } = useFetchGifs(category);
 
   return (
     <div className="listGifs">
       <h1>{category}</h1>
+      {isLoading ? (
+          <h2>Cargando...</h2>
+        ) : null}
       <div className="row">
         {images.map((image) => {
           //Esparcimos todas las propiedades del image.
-          return <GifItemm key={image.id} {...image} category={category}></GifItemm>;
+          return (
+            <GifItemm key={image.id} {...image} category={category} isLoading={isLoading}></GifItemm>
+          );
         })}
       </div>
     </div>
