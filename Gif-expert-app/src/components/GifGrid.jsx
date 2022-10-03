@@ -1,20 +1,27 @@
 import { useState, useEffect } from "react";
 import { getGifs } from "../functions/getGifs";
 import { GifItemm } from "./GifItem";
+import { useFetchGifs } from "../hooks/useFetchGifs";
 
 export const GifGrid = ({ category }) => {
-  const [images, setImages] = useState([]);
 
-  const getImages = async () => {
-    const newImages = await getGifs(category);
-    setImages(newImages);
-  };
+  const {images, isLoading} = useFetchGifs(category);
 
-  //useEffect dispara un efecto secundario
-  //useEffect no puede ser asincrono (async)
-  useEffect(() => {
-    getImages();
-  }, []);
+  console.log(isLoading);
+  // En ves de todo este codigo usaremos un custom hook.
+  // const [images, setImages] = useState([]);
+  // const [isLoadinig, setIsLoading] = useState([]);
+
+  // const getImages = async () => {
+  //   const newImages = await getGifs(category);
+  //   setImages(newImages);
+  // };
+
+  // //useEffect dispara un efecto secundario
+  // //useEffect no puede ser asincrono (async)
+  // useEffect(() => {
+  //   getImages();
+  // }, []);
 
   return (
     <div className="listGifs">
